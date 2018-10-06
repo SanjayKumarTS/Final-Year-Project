@@ -9,19 +9,22 @@ class LoginScreen extends React.Component {
       _password: ''
     }
   }
-  // _handlePress(){
-  //   if(this.state._username != '' && this.state._password != ''){
-  //     console.log(this.state._username);
-  //     console.log(this.state._password);
-  //     this.props.navigation.navigate('HomeScreen');
-  // }
-  //   else
-  //     console.log('Username or Password is blank');
-  // }
+  static navigationOptions = {
+    header: null
+  }
+  _handlePress(){
+    if(this.state._username != '' && this.state._password != ''){
+      console.log(this.state._username);
+      console.log(this.state._password);
+      this.props.navigation.navigate('Home');
+  }
+    else
+      console.log('Username or Password is blank');
+  }
   render() {
     return (
     <ImageBackground
-        source={require('./assets/blurred-background-colors-daylight-1424108.jpg')}
+        source={require('../assets/blurred-background-colors-daylight-1424108.jpg')}
         style={[styles.container,{width: '100%'}, {height: '100%'}]}>
         <Text
           allowFontScaling={false}
@@ -49,7 +52,7 @@ class LoginScreen extends React.Component {
         </TextInput>
         <TouchableOpacity
           style = {styles.buttonStyle}
-          onPress = {() => this.props.navigation.navigate('Home')}>
+          onPress = {() => this._handlePress()}>
             <Text allowFontScaling={false} style = {styles.submitText}>Login</Text>
         </TouchableOpacity>
         <View style = {{flexDirection: 'row'}}><Text allowFontScaling={false} style = {[{fontSize: 25},{color: '#f7f6f7'},{paddingRight: 40}]}>Password?</Text><Text allowFontScaling={false} style = {[{fontSize: 25},{color: '#f7f6f7'}]}>Register</Text></View>
@@ -99,13 +102,15 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     width: '75%',
     height: '8%',
-    margin: 10
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   submitText:{
     color: '#f7f6f7',
     textAlign: 'center',
     fontSize: 25,
     margin: 10,
-    fontFamily: 'sans-serif'
+    fontFamily: 'sans-serif',
   }
 });
